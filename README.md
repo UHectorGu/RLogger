@@ -67,5 +67,5 @@ RLog.isLoggable(Log.DEBUG, "Service");
 
 当前版本设计得不好，还有很多问题，也是提供给自己使用，后期我会以表格形式输出数据，重新设计得更易用一点，让看Log更清晰
 
-[jcenter-svg]: https://api.bintray.com/packages/hectorgu/maven/liblogger/images/download.svg?version=1.0.3
-[jcenter-link]: https://bintray.com/hectorgu/maven/liblogger/1.0.3/link
+[jcenter-svg]: https://api.bintray.com/packages/hectorgu/maven/liblogger/images/download.svg?version=1.0.4
+[jcenter-link]: https://bintray.com/hectorgu/maven/liblogger/1.0.4/link
