@@ -2,7 +2,7 @@
 
 [![Download][jcenter-svg]][jcenter-link]
 
-自封装自用的简单易Logger工具，后期希望封装更多功能
+自封装自用的简单易Logger工具
 
 ## 使用
 
