@@ -4,19 +4,26 @@
 
 自封装自用的简单易Logger工具.
 
-## 使用
+## 下载
 
-#### gradle
-
-在build.gradle文件添加以下语句
+Gradle:
 
 ```gradle
-
-implementation 'com.hectorgu:liblogger:1.0.x'
-
+implementation 'com.hectorgu:liblogger:1.0.5'
 ```
 
-#### 基础
+Maven:
+
+```xml
+<dependency>
+	<groupId>com.hectorgu</groupId>
+	<artifactId>liblogger</artifactId>
+	<version>1.0.5</version>
+	<type>pom</type>
+</dependency>
+```
+
+## 使用
 
 格式化输出, 内部对输出对象做了处理，可以直接输出对象
 
@@ -63,5 +70,5 @@ RLog.isLoggable(Log.DEBUG, "Service");
 
 ```
 
-[jcenter-svg]: https://api.bintray.com/packages/hectorgu/maven/liblogger/images/download.svg?version=1.0.4
-[jcenter-link]: https://bintray.com/hectorgu/maven/liblogger/1.0.4/link
+[jcenter-svg]: https://api.bintray.com/packages/hectorgu/maven/liblogger/images/download.svg?version=1.0.5
+[jcenter-link]: https://bintray.com/hectorgu/maven/liblogger/1.0.5/link
