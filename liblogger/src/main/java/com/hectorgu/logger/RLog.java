@@ -1,5 +1,9 @@
 package com.hectorgu.logger;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
+import com.hectorgu.logger.annotation.LogType;
 import com.hectorgu.logger.printer.IPrinter;
 import com.hectorgu.logger.printer.LogcatPrinter;
 import com.hectorgu.logger.strategy.JsonStrategy;
@@ -19,6 +23,10 @@ public final class RLog {
         sPrinter.addStrategy(new LogcatStrategy());
         sPrinter.addStrategy(new JsonStrategy());
         sPrinter.addStrategy(new XmlStrategy());
+    }
+
+    public static void logger(int priority, @NonNull String format, @Nullable Object... args) {
+        sPrinter.log(priority, RLog.LOGCAT_TYPE_ORIGINAL, format, args);
     }
 
     public static void d(String format, Object... msg) {
