@@ -1,29 +1,35 @@
 package com.hectorgu.logger.util;
 
+import android.support.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Iterator;
 
 @SuppressWarnings("ALL")
 public final class LibCompat {
 
-    public static <T> Collection<T> filter(T[] target, Predicate<T> predicate) {
+    public static <T> Collection<T> filter(@NonNull T[] target, @NonNull Predicate<T> predicate) {
         return filter(Arrays.asList(target), predicate);
     }
 
-    public static <E> Collection<E> filter(Iterator<E> target, Predicate<E> predicate) {
-        Collection<E> result = new ArrayList<E>();
-        for (Iterator<E> it = target; it.hasNext(); ) {
-            E element = it.next();
-            if (predicate.accept(element)) {
-                result.add(element);
-            }
-        }
-        return result;
+    public static <T> T select(@NonNull T[] target, @NonNull Predicate<T> predicate) {
+        return select(target, predicate, null);
     }
 
-    public static <T> Collection<T> filter(Collection<T> target, Predicate<T> predicate) {
+    public static <T> T select(@NonNull T[] target, @NonNull Predicate<T> predicate, T defaultValue) {
+        return select(Arrays.asList(target), predicate, defaultValue);
+    }
+
+    public static <T> T select(@NonNull Collection<T> target, @NonNull Predicate<T> predicate) {
+        return select(target, predicate, null);
+    }
+
+    public static <T> void forEach(@NonNull T[] target, @NonNull Consumer<T> consumer) {
+        forEach(Arrays.asList(target), consumer);
+    }
+
+    public static <T> Collection<T> filter(@NonNull Collection<T> target, @NonNull Predicate<T> predicate) {
         Collection<T> result = new ArrayList<T>();
         for (T element : target) {
             if (predicate.accept(element)) {
@@ -33,19 +39,7 @@ public final class LibCompat {
         return result;
     }
 
-    public static <T> T select(T[] target, Predicate<T> predicate) {
-        return select(target, predicate, null);
-    }
-
-    public static <T> T select(T[] target, Predicate<T> predicate, T defaultValue) {
-        return select(Arrays.asList(target), predicate, defaultValue);
-    }
-
-    public static <T> T select(Collection<T> target, Predicate<T> predicate) {
-        return select(target, predicate, null);
-    }
-
-    public static <T> T select(Collection<T> target, Predicate<T> predicate, T defaultValue) {
+    public static <T> T select(@NonNull Collection<T> target, @NonNull Predicate<T> predicate, T defaultValue) {
         T result = defaultValue;
         for (T element : target) {
             if (!predicate.accept(element))
@@ -56,15 +50,10 @@ public final class LibCompat {
         return result;
     }
 
-    public static <T> void forEach(Collection<T> target, Consumer<T> consumer) {
-        requireNonNull(consumer);
+    public static <T> void forEach(@NonNull Collection<T> target, @NonNull Consumer<T> consumer) {
         for (T t : target) {
             consumer.accept(t);
         }
-    }
-
-    public static <T> void forEach(T[] target, Consumer<T> consumer) {
-        forEach(Arrays.asList(target), consumer);
     }
 
     public static <T> T requireNonNull(T obj) {
