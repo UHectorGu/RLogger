@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         tests.add("123");
         tests.add("321");
         tests.add("456");
-        RLog.d("%s", Arrays.toString(tests.toArray()));
+        RLog.d("Log Collection=%s", tests);
     }
 
 }
