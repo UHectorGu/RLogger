@@ -11,6 +11,8 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -52,6 +54,8 @@ public final class MessageFormatter {
                     || a instanceof BigDecimal
                     || a instanceof BigInteger) {
                 linkedArgs.add(a);
+            } if(a instanceof Collection) {
+                linkedArgs.add(Arrays.toString(((Collection) a).toArray()));
             } else {
                 linkedArgs.add(String.valueOf(a));
             }
