@@ -9,7 +9,7 @@
 Gradle:
 
 ```gradle
-implementation 'com.hectorgu:liblogger:1.0.7'
+implementation 'com.hectorgu:liblogger:1.0.x'
 ```
 
 Maven:
@@ -70,5 +70,5 @@ RLog.isLoggable(Log.DEBUG, "Service");
 
 ```
 
-[jcenter-svg]: https://api.bintray.com/packages/hectorgu/maven/liblogger/images/download.svg?version=1.0.7
-[jcenter-link]: https://bintray.com/hectorgu/maven/liblogger/1.0.7/link
+[jcenter-svg]: https://api.bintray.com/packages/hectorgu/maven/liblogger/images/download.svg?version=1.0.8
+[jcenter-link]: https://bintray.com/hectorgu/maven/liblogger/1.0.8/link
