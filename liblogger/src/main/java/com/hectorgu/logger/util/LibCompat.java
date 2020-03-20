@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Map;
 
 @SuppressWarnings("ALL")
 public final class LibCompat {
@@ -29,6 +30,17 @@ public final class LibCompat {
         forEach(Arrays.asList(target), consumer);
     }
 
+    public static <K, V> Collection<V> filter(@NonNull Map<K, V> target, @NonNull MPredicate<K, V> predicate) {
+        Collection<V> result = new ArrayList<V>();
+        for (K key : target.keySet()) {
+            V value = target.get(key);
+            if (predicate.accept(key, value)) {
+                result.add(value);
+            }
+        }
+        return result;
+    }
+
     public static <T> Collection<T> filter(@NonNull Collection<T> target, @NonNull Predicate<T> predicate) {
         Collection<T> result = new ArrayList<T>();
         for (T element : target) {
@@ -50,9 +62,28 @@ public final class LibCompat {
         return result;
     }
 
+    public static <K, V> V select(@NonNull Map<K, V> target, @NonNull MPredicate<K, V> predicate) {
+        V result = null;
+        for (K key : target.keySet()) {
+            V value = target.get(key);
+            if (!predicate.accept(key, value))
+                continue;
+            result = value;
+            break;
+        }
+        return result;
+    }
+
     public static <T> void forEach(@NonNull Collection<T> target, @NonNull Consumer<T> consumer) {
         for (T t : target) {
             consumer.accept(t);
+        }
+    }
+
+    public static <K, V> void forEach(@NonNull Map<K, V> target, @NonNull MConsumer<K, V> consumer) {
+        for (K key : target.keySet()) {
+            V value = target.get(key);
+            consumer.accept(key, value);
         }
     }
 
